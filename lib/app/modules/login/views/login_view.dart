@@ -56,7 +56,7 @@ class LoginView extends GetView<LoginController> {
                   const SizedBox(height: 16),
                   const SizedBox(height: 16),
                   MaterialButton(
-                    onPressed: () => Get.toNamed(Routes.DASHBOARD),
+                    onPressed: () => controller.submitForm(),
                     child: Container(
                       width: 150,
                       padding: const EdgeInsets.all(8),

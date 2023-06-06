@@ -18,7 +18,7 @@ class DashboardView extends GetView<DashboardController> {
             mainAxisSize: MainAxisSize.min,
             children: [
               MaterialButton(
-                onPressed: () => Get.toNamed(Routes.QUIZPAGE),
+                onPressed: () => controller.uploadData(),
                 child: Container(
                   width: 150,
                   padding: const EdgeInsets.all(8),

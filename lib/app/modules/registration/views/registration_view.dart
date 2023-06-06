@@ -107,9 +107,6 @@ class RegistrationView extends GetView<RegistrationController> {
                       if (value == null || value.isEmpty) {
                         return 'Please confirm your password';
                       }
-                      if (value != controller.password) {
-                        return 'Passwords do not match';
-                      }
                       return null;
                     },
                     onSaved: (value) {
@@ -117,24 +114,33 @@ class RegistrationView extends GetView<RegistrationController> {
                     },
                   ),
                   const SizedBox(height: 16),
-                  MaterialButton(
-                    onPressed: () => Get.toNamed(Routes.LOGIN),
-                    child: Container(
-                      width: 150,
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColorLight,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: const Center(
-                        child: Text(
-                          "Register",
-                          style: TextStyle(
-                            fontSize: 20,
+                  Obx(
+                    () => !controller.isLoading.value
+                        ? MaterialButton(
+                            onPressed: () => controller.submitForm(),
+                            child: Container(
+                              width: 150,
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context).primaryColorLight,
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: const Center(
+                                child: Text(
+                                  "Register",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        : Container(
+                            height: 30,
+                            child: const Center(
+                              child: CircularProgressIndicator(),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  )
                 ],
               ),
             ),
