@@ -11,54 +11,63 @@ class QuizpageView extends GetView<QuizpageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('QuizpageView'),
+        title: const Text('Quiz'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView.builder(
-              controller: controller.pageController,
-              itemCount: controller.questions.length,
-              itemBuilder: (context, index) {
-                return QuizPage(index: index);
-              },
-            ),
-          ),
-          const SizedBox(height: 16),
-          Obx(
-            () => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                // ElevatedButton(
-                //   onPressed: controller.previousQuestion,
-                //   child: const Text('Previous'),
-                // ),
-                MaterialButton(
-                  onPressed: () => controller.isFinalQuestion.value
-                      ? controller.submitAnswer()
-                      : controller.nextQuestion(),
-                  child: Container(
-                    width: 150,
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColorLight,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                      child: Text(
-                        controller.isFinalQuestion.value ? "Submit" : "Next",
-                        style: const TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
+      body: Obx(
+        () => controller.isLoading.isTrue
+            ? const SizedBox(
+                height: 100,
+                child: Center(child: CircularProgressIndicator()),
+              )
+            : Column(
+                children: [
+                  Expanded(
+                    child: PageView.builder(
+                      controller: controller.pageController,
+                      itemCount: controller.data.docs.length,
+                      itemBuilder: (context, index) {
+                        return QuizPage(index: index);
+                      },
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 16),
-        ],
+                  const SizedBox(height: 16),
+                  Obx(
+                    () => Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        // ElevatedButton(
+                        //   onPressed: controller.previousQuestion,
+                        //   child: const Text('Previous'),
+                        // ),
+                        MaterialButton(
+                          onPressed: () => controller.isFinalQuestion.value
+                              ? controller.submitAnswer()
+                              : controller.nextQuestion(),
+                          child: Container(
+                            width: 150,
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).primaryColorLight,
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Center(
+                              child: Text(
+                                controller.isFinalQuestion.value
+                                    ? "Submit"
+                                    : "Next",
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
       ),
     );
   }

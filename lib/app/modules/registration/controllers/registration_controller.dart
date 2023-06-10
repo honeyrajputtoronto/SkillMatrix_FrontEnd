@@ -60,7 +60,6 @@ class RegistrationController extends GetxController {
         'uid': userCredential.user?.uid
       };
 
-// Add a new document with a generated ID
       db.collection("users").add(user).then((DocumentReference doc) =>
           print('DocumentSnapshot added with ID: ${doc.id}'));
       isLoading.value = false;
@@ -75,6 +74,6 @@ class RegistrationController extends GetxController {
         .where('email', isEqualTo: email)
         .get();
 
-    return snapshot.docs.isNotEmpty;
+    return snapshot.docs.isEmpty;
   }
 }

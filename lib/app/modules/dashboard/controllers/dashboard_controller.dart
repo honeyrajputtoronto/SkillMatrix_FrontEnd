@@ -1,13 +1,14 @@
 import 'package:get/get.dart';
 
 class DashboardController extends GetxController {
-  //TODO: Implement DashboardController
-
-
-
+  RxBool isLoading = false.obs;
   @override
   void onInit() {
     super.onInit();
+    isLoading.value = true;
+    Future.delayed(const Duration(seconds: 5), () {
+      isLoading.value = false;
+    });
   }
 
   @override
@@ -20,7 +21,5 @@ class DashboardController extends GetxController {
     super.onClose();
   }
 
-  void uploadData() async {
-
-  }
+  void uploadData() async {}
 }
