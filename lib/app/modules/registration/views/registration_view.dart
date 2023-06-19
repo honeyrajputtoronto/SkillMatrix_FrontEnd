@@ -38,36 +38,6 @@ class RegistrationView extends GetView<RegistrationController> {
                   const SizedBox(height: 16),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'College Name',
-                        hintStyle: Theme.of(context).textTheme.bodySmall),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a college name';
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      controller.collegeName = value!;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        hintText: 'College ID',
-                        hintStyle: Theme.of(context).textTheme.bodySmall),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a college ID';
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      controller.collegeId = value!;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    decoration: InputDecoration(
                         hintText: 'Email',
                         hintStyle: Theme.of(context).textTheme.bodySmall),
                     validator: (value) {
@@ -117,7 +87,7 @@ class RegistrationView extends GetView<RegistrationController> {
                   Obx(
                     () => !controller.isLoading.value
                         ? MaterialButton(
-                            onPressed: () => controller.submitForm(),
+                            onPressed: () => controller.callRegApi(),
                             child: Container(
                               width: 150,
                               padding: const EdgeInsets.all(8),
