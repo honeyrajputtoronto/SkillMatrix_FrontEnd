@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:skillmatrix/app/modules/quizpage/views/quiz_page.dart';
-
 import '../controllers/quizpage_controller.dart';
+import '../../../../app_data.dart';
 
 class QuizpageView extends GetView<QuizpageController> {
   const QuizpageView({Key? key}) : super(key: key);
@@ -25,46 +24,13 @@ class QuizpageView extends GetView<QuizpageController> {
                   Expanded(
                     child: PageView.builder(
                       controller: controller.pageController,
-                      itemCount: controller.data.docs.length,
+                      itemCount: questionData.length ,
                       itemBuilder: (context, index) {
                         return QuizPage(index: index);
                       },
                     ),
                   ),
                   const SizedBox(height: 16),
-                  Obx(
-                    () => Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        // ElevatedButton(
-                        //   onPressed: controller.previousQuestion,
-                        //   child: const Text('Previous'),
-                        // ),
-                        MaterialButton(
-                          onPressed: () => controller.isFinalQuestion.value
-                              ? controller.submitAnswer()
-                              : controller.nextQuestion(),
-                          child: Container(
-                            width: 150,
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColorLight,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Center(
-                              child: Text(
-                                controller.isFinalQuestion.value
-                                    ? "Submit"
-                                    : "Next",
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                   const SizedBox(height: 16),
                 ],
               ),

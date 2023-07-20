@@ -1,11 +1,15 @@
 import 'package:get/get.dart';
 
+import '../modules/competitions/bindings/competition_bindings.dart';
+import '../modules/competitions/views/competition_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/pair_page/bindings/pair_bindings.dart';
+import '../modules/pair_page/views/pair_view.dart';
 import '../modules/quizpage/bindings/quizpage_binding.dart';
 import '../modules/quizpage/views/quizpage_view.dart';
 import '../modules/registration/bindings/registration_binding.dart';
@@ -33,7 +37,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => const LoginView(),
+      page: () =>const LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
@@ -51,5 +55,16 @@ class AppPages {
       page: () => const ResultsPageView(),
       binding: ResultsPageBinding(),
     ),
+    GetPage(
+        name: _Paths.COMPETITION,
+        page: () => const CompetitionView(),
+        binding: CompetitionBinding()
+    ),
+    GetPage(
+        name: _Paths.PAIR,
+        page: () => const PairView(),
+        binding: PairBinding()
+    ),
   ];
 }
+

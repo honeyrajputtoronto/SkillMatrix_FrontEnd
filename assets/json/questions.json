@@ -1,0 +1,259 @@
+{
+    "level1": [
+      {
+        "question_id": 1,
+        "question_text": "What is RAM?",
+        "choice1": "Random Access Memory",
+        "choice2": "Read Again Memory",
+        "choice3": "Re-Access Memory",
+        "choice4": "None Of These",
+        "correct_ans": "Random Access Memory",
+        "level": 1
+      },
+      {
+        "question_id": 2,
+        "question_text": "What is Python?",
+        "choice1": "Programming Language",
+        "choice2": "Database Query Language",
+        "choice3": "Both",
+        "choice4": "None Of These",
+        "correct_ans": "Programming Language",
+        "level": 1
+      },
+      {
+        "question_id": 3,
+        "question_text": "What is HTML?",
+        "choice1": "Hypertext Markup Language",
+        "choice2": "Hyper Text Transfer Protocol",
+        "choice3": "Home Tool Markup Language",
+        "choice4": "None Of These",
+        "correct_ans": "Hypertext Markup Language",
+        "level": 1
+      }
+    ],
+    "level2": [
+      {
+        "question_id": 4,
+        "question_text": "What is CPU?",
+        "choice1": "Central Processing Unit",
+        "choice2": "Central Performance Unit",
+        "choice3": "Computer Processing Unit",
+        "choice4": "None Of These",
+        "correct_ans": "Central Processing Unit",
+        "level": 2
+      },
+      {
+        "question_id": 5,
+        "question_text": "What is JavaScript?",
+        "choice1": "Scripting Language",
+        "choice2": "Markup Language",
+        "choice3": "Programming Language",
+        "choice4": "None Of These",
+        "correct_ans": "Scripting Language",
+        "level": 2
+      },
+      {
+        "question_id": 6,
+        "question_text": "What is CSS?",
+        "choice1": "Cascading Style Sheets",
+        "choice2": "Cross-Platform Style Sheets",
+        "choice3": "Computer Style Sheets",
+        "choice4": "None Of These",
+        "correct_ans": "Cascading Style Sheets",
+        "level": 2
+      }
+    ],
+    "level3": [
+      {
+        "question_id": 7,
+        "question_text": "What is GPU?",
+        "choice1": "Graphics Processing Unit",
+        "choice2": "Graphics Performance Unit",
+        "choice3": "General Processing Unit",
+        "choice4": "None Of These",
+        "correct_ans": "Graphics Processing Unit",
+        "level": 3
+      },
+      {
+        "question_id": 8,
+        "question_text": "What is SQL?",
+        "choice1": "Structured Query Language",
+        "choice2": "Standard Query Language",
+        "choice3": "System Query Language",
+        "choice4": "None Of These",
+        "correct_ans": "Structured Query Language",
+        "level": 3
+      },
+      {
+        "question_id": 9,
+        "question_text": "What is Java?",
+        "choice1": "Programming Language",
+        "choice2": "Scripting Language",
+        "choice3": "Markup Language",
+        "choice4": "None Of These",
+        "correct_ans": "Programming Language",
+        "level": 3
+      }
+    ],
+    "level4": [
+      {
+        "question_id": 10,
+        "question_text": "What is DNS?",
+        "choice1": "Domain Name Service",
+        "choice2": "Domain Name System",
+        "choice3": "Domain Network Service",
+        "choice4": "None Of These",
+        "correct_ans": "Domain Name System",
+        "level": 4
+      },
+      {
+        "question_id": 11,
+        "question_text": "What is PHP?",
+        "choice1": "Hypertext Preprocessor",
+        "choice2": "Hypertext Programming",
+        "choice3": "Hypertext Processor",
+        "choice4": "None Of These",
+        "correct_ans": "Hypertext Preprocessor",
+        "level": 4
+      },
+      {
+        "question_id": 12,
+        "question_text": "What is SSL?",
+        "choice1": "Secure Socket Layer",
+        "choice2": "Secure System Layer",
+        "choice3": "Secure Style Layer",
+        "choice4": "None Of These",
+        "correct_ans": "Secure Socket Layer",
+        "level": 4
+      }
+    ],
+    "level5": [
+      {
+        "question_id": 13,
+        "question_text": "What is XML?",
+        "choice1": "eXtensible Markup Language",
+        "choice2": "eXecutable Markup Language",
+        "choice3": "eXtra Markup Language",
+        "choice4": "None Of These",
+        "correct_ans": "eXtensible Markup Language",
+        "level": 5
+      },
+      {
+        "question_id": 14,
+        "question_text": "What is Ruby?",
+        "choice1": "Programming Language",
+        "choice2": "Scripting Language",
+        "choice3": "Markup Language",
+        "choice4": "None Of These",
+        "correct_ans": "Programming Language",
+        "level": 5
+      },
+      {
+        "question_id": 15,
+        "question_text": "What is API?",
+        "choice1": "Application Programming Interface",
+        "choice2": "Application Process Interface",
+        "choice3": "Application Performance Interface",
+        "choice4": "None Of These",
+        "correct_ans": "Application Programming Interface",
+        "level": 5
+      }
+    ],
+    "level6": [
+      {
+        "question_id": 16,
+        "question_text": "What is HTTP?",
+        "choice1": "Hypertext Transfer Protocol",
+        "choice2": "Hypertext Transfer Process",
+        "choice3": "Hypertext Test Protocol",
+        "choice4": "None Of These",
+        "correct_ans": "Hypertext Transfer Protocol",
+        "level": 6
+      },
+      {
+        "question_id": 17,
+        "question_text": "What is C++?",
+        "choice1": "Programming Language",
+        "choice2": "Scripting Language",
+        "choice3": "Markup Language",
+        "choice4": "None Of These",
+        "correct_ans": "Programming Language",
+        "level": 6
+      },
+      {
+        "question_id": 18,
+        "question_text": "What is SMTP?",
+        "choice1": "Simple Mail Transfer Protocol",
+        "choice2": "Simple Message Transfer Protocol",
+        "choice3": "Simple Mail Testing Protocol",
+        "choice4": "None Of These",
+        "correct_ans": "Simple Mail Transfer Protocol",
+        "level": 6
+      }
+    ],
+    "level7": [
+      {
+        "question_id": 19,
+        "question_text": "What is JSON?",
+        "choice1": "JavaScript Object Notation",
+        "choice2": "JavaScript Oriented Notation",
+        "choice3": "JavaScript Order Notation",
+        "choice4": "None Of These",
+        "correct_ans": "JavaScript Object Notation",
+        "level": 7
+      },
+      {
+        "question_id": 20,
+        "question_text": "What is C#?",
+        "choice1": "Programming Language",
+        "choice2": "Scripting Language",
+        "choice3": "Markup Language",
+        "choice4": "None Of These",
+        "correct_ans": "Programming Language",
+        "level": 7
+      },
+      {
+        "question_id": 21,
+        "question_text": "What is FTP?",
+        "choice1": "File Transfer Protocol",
+        "choice2": "File Testing Protocol",
+        "choice3": "File Transfer Process",
+        "choice4": "None Of These",
+        "correct_ans": "File Transfer Protocol",
+        "level": 7
+      }
+    ],
+    "level8": [
+      {
+        "question_id": 22,
+        "question_text": "What is SVG?",
+        "choice1": "Scalable Vector Graphics",
+        "choice2": "Scalable Video Graphics",
+        "choice3": "System Vector Graphics",
+        "choice4": "None Of These",
+        "correct_ans": "Scalable Vector Graphics",
+        "level": 8
+      },
+      {
+        "question_id": 23,
+        "question_text": "What is Kotlin?",
+        "choice1": "Programming Language",
+        "choice2": "Scripting Language",
+        "choice3": "Markup Language",
+        "choice4": "None Of These",
+        "correct_ans": "Programming Language",
+        "level": 8
+      },
+      {
+        "question_id": 24,
+        "question_text": "What is DNSSEC?",
+        "choice1": "Domain Name System Security Extensions",
+        "choice2": "Domain Name System Security",
+        "choice3": "Domain Name Security Extensions",
+        "choice4": "None Of These",
+        "correct_ans": "Domain Name System Security Extensions",
+        "level": 8
+      }
+    ]
+  }
+  

@@ -1,29 +1,64 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:convert';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+//import 'package:shared_preferences/shared_preferences.dart';
+import 'package:skillmatrix/app_data.dart';
 import '../../../routes/app_pages.dart';
+import 'package:flutterwebapp_reload_detector/flutterwebapp_reload_detector.dart';
+
 
 class LoginController extends GetxController {
-
   final formKey = GlobalKey<FormState>();
 
-  String email = '';
+  String username = '';
   String password = '';
+  late String stringResponse;
+ // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance() ;
 
-
+  @override
+  void onInit() {
+    WebAppReloadDetector.onReload(() {
+      Get.toNamed(Routes.HOME);
+    });
+    super.onInit();
+  }
 
   void submitForm() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       var request = http.MultipartRequest(
-          'POST', Uri.parse('http://127.0.0.1:8002/login/'));
-      request.fields.addAll({'username': '$email', 'password': '$password'});
-
+          'POST', Uri.parse('http://127.0.0.1:8000/login/'));
+      request.fields.addAll({'username': username, 'password': password});
       http.StreamedResponse response = await request.send();
-
+      stringResponse = await response.stream.bytesToString();
       if (response.statusCode == 200) {
+        final json = await jsonDecode(stringResponse);
+        if (json['access_token'] != null) {
+         // var token = json['access_token'];
+         // final SharedPreferences? prefs = await _prefs ;
+         // await prefs?.setString('token', json['access_token']);
+          accessToken = json['access_token'];
+          userId = json['user_id'];
+          Get.toNamed(Routes.COMPETITION);
+         } else {
+          Get.showSnackbar(const GetSnackBar(
+            message: "Something went wrong.. try again",
+          ));
+        }
       } else {
+        if (stringResponse.contains('error')) {
+          Get.showSnackbar(const GetSnackBar(
+            duration: Duration(seconds: 2),
+            message: "Invalid username or password !!!",
+          ));
+        } else {
+          Get.showSnackbar(const GetSnackBar(
+            duration: Duration(seconds: 2),
+            message: "Invalid username or password !!!",
+          ));
+        }
       }
     }
   }

@@ -5,8 +5,8 @@ import '../controllers/results_page_controller.dart';
 class ResultsPageBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<ResultsPageController>(
-      () => ResultsPageController(),
+    Get.put<ResultsPageController>(
+       ResultsPageController(),
     );
   }
 }

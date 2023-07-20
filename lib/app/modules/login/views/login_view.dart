@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
-import '../../../routes/app_pages.dart';
+//import '../../../routes/app_pages.dart';
+import '../../../../app_data.dart';
 import '../controllers/login_controller.dart';
+
+
 
 class LoginView extends GetView<LoginController> {
   const LoginView({Key? key}) : super(key: key);
@@ -11,6 +12,10 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () => Get.back(),
+            icon: const Icon(Icons.arrow_back),
+          ),
           title: const Text('Login'),
         ),
         body: Center(
@@ -20,21 +25,21 @@ class LoginView extends GetView<LoginController> {
               key: controller.formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-
                 children: [
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Email',
+                        hintText: 'Username',
                         hintStyle: Theme.of(context).textTheme.bodySmall),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter an email';
+                        return 'Please enter an Username';
                       }
                       // You can add more complex email validation logic here if needed
                       return null;
                     },
                     onSaved: (value) {
-                      controller.email = value!;
+                      username = value!;
+                      controller.username = value;
                     },
                   ),
                   const SizedBox(height: 16),

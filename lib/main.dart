@@ -13,6 +13,7 @@ Future<void> main() async {
   );
   runApp(
     GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Skill Matrix",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
