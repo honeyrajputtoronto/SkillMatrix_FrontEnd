@@ -18,8 +18,8 @@ class QuizpageController extends GetxController {
   RxBool isOptionSelected = false.obs;
   RxBool isAnswerCorrect = false.obs;
   RxBool isTimeOver = false.obs;
-  int start = 5;
-  RxInt current = 5.obs;
+  int start = 30;
+  RxInt current = 30.obs;
  // late String stringResponse;
 
   @override
@@ -82,9 +82,9 @@ class QuizpageController extends GetxController {
     //stringResponse = await response.stream.bytesToString();
    // print( "yaha pe hun");
     var request = await http.put(
-      Uri.parse('http://127.0.0.1:8000/score/$participantId') ,
+      Uri.parse('http://18.117.191.147:8000/score/$participantId') ,
       body: {
-        "Score": "20",      //TODO: change the pre defined results
+        "Score": score.toStringAsFixed(8),      //TODO: change the pre defined results
       },
     );
    //  print(participantId);
@@ -94,16 +94,16 @@ class QuizpageController extends GetxController {
    //  print("sdasdasd");
     if (request.statusCode == 201) {
       Timer(const Duration(seconds: 30), () async {
-        final response = await http.post(Uri.parse("http://127.0.0.1:8000/winner/$matchId"),
+        final response = await http.post(Uri.parse("http://18.117.191.147:8000/winner/$matchId"),
             body: {}
         );
 
      // print("matchid$matchId");
       Timer(const Duration(seconds: 30), () async {
-        final response = await http.get(Uri.parse("http://127.0.0.1:8000/winner/show/$matchId"));
+        final response = await http.get(Uri.parse("http://18.117.191.147:8000/winner/show/$matchId"));
       //  print(response.body);
         var responseData = json.decode(response.body);
-        final levelResponse = await http.post(Uri.parse("http://127.0.0.1:8000/levels/$competitionId") , body: {});
+        final levelResponse = await http.post(Uri.parse("http://18.117.191.147:8000/levels/$competitionId") , body: {});
         var levelResponseData = json.decode(levelResponse.body);
         if(response.statusCode == 200) {
           if (responseData['username'] == username) {
@@ -141,7 +141,7 @@ class QuizpageController extends GetxController {
       } else {
         Get.showSnackbar(const GetSnackBar(
           duration: Duration(seconds: 2),
-          message: "No registered user found !!!",
+          message: "No participant found for corresponding id !!!",
         ));
       }
     }
@@ -149,7 +149,7 @@ class QuizpageController extends GetxController {
 
     // isCompetitionWinner.value = false;
     //   Get.toNamed(Routes.RESULTS_PAGE, arguments: {
-    //     'winner': player.value,                                            //todo: remove line 123 - 126  uncomment 78-123
+    //     'winner': player.value,
     //   });
       
   }

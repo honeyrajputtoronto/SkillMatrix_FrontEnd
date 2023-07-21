@@ -102,7 +102,7 @@ class _QuizPageState extends State<QuizPage> {
           padding: const EdgeInsets.all(30),
           child: Obx(() {
           if(widget.controller.isTimeOver.isTrue ){
-            print("Time Over");
+            //print("Time Over");
             widget.controller.nextQuestion();
             widget.controller.current.value = 5;
             widget.controller.isTimeOver.value = false;

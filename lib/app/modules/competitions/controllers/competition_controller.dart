@@ -47,7 +47,7 @@ class CompetitionController extends GetxController {
 
     // timeFromApi = (await getTime()) as DateTime;
     // print(timeFromApi);
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 10), () {
     //   // print("10 sec khtm");
       isLoading.value = false;
     //   // for (int i = 0; i < competitions.length; i++) {
@@ -73,7 +73,7 @@ class CompetitionController extends GetxController {
 
   Future<List<CompetitionModel>> getCompetitionData() async {
     final response = await http.get(
-        Uri.parse("http://127.0.0.1:8000/competition/"));
+        Uri.parse("http://18.117.191.147:8000/competition/"));
     var responseData = json.decode(response.body.toString());
     // var responseData = [
     //   {
@@ -103,7 +103,7 @@ class CompetitionController extends GetxController {
   Future<void> registerParticipant(String competitionId1) async {
     // print("id yeh hai $competitionId");
     var request = http.MultipartRequest(
-        'POST', Uri.parse('http://127.0.0.1:8000/participantview/'));
+        'POST', Uri.parse('http://18.117.191.147:8000/participantview/'));
     request.fields.addAll({
       "user": userId.toString(),
       "competition": competitionId1,

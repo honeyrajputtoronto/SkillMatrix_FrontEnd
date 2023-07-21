@@ -43,7 +43,7 @@ class RegistrationController extends GetxController {
     if (formKey1.currentState!.validate()) {
       formKey1.currentState!.save();
       var request = http.MultipartRequest(
-          'POST', Uri.parse('http://127.0.0.1:8000/register/'));
+          'POST', Uri.parse('http://18.117.191.147:8000/register/'));
       request.fields.addAll({
         'username': userName,
         'email': email,
@@ -54,7 +54,7 @@ class RegistrationController extends GetxController {
       stringResponse = await response.stream.bytesToString();
       if (response.statusCode == 201) {
         final json = await jsonDecode(stringResponse);
-        print(json);
+       // print(json);
         if (json['msg'] == "Registeration ok") {
           //final SharedPreferences prefs = await _prefs;
           //prefs.setString('token', json['token']["access"]);

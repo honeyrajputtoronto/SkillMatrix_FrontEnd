@@ -20,7 +20,7 @@ class ResultsPageController extends GetxController {
     if (isCompetitionWinner.isFalse) {
       if (argumentData['winner'][0] == player.value) {
        // print("a");
-        Timer(const Duration(seconds: 6),
+        Timer(const Duration(seconds: 60),
                 () async {
              await Get.offAllNamed(Routes.PAIR);
             });
@@ -32,7 +32,7 @@ class ResultsPageController extends GetxController {
         //           print(2);
         //           await Get.toNamed(Routes.COMPETITION);
         //     });
-        Future.delayed(const Duration(seconds: 6), () async {
+        Future.delayed(const Duration(seconds: 60), () async {
           await Get.offAllNamed(Routes.COMPETITION);
         },);
       }
@@ -42,7 +42,7 @@ class ResultsPageController extends GetxController {
      // print("c");
      // print("`````````");
 
-      Timer(const Duration(seconds: 6),
+      Timer(const Duration(seconds: 60),
               () async {
                 await Get.offAllNamed(Routes.COMPETITION);
                 isCompetitionWinner.value = false;
