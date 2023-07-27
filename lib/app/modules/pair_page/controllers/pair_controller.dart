@@ -56,7 +56,7 @@ class PairController extends GetxController {
     // http.StreamedResponse response = await request.send();
     // stringResponse = await response.stream.bytesToString();
    // print(participantLevel);
-    var response = await http.post(Uri.parse('http://18.117.191.147:8000/pair/$participantLevel') , body: {});
+    var response = await http.post(Uri.parse('https://skillmatrix.onrender.com/pair/$participantLevel') , body: {});
    // print(response.statusCode);
    // print(response.body);
     if (response.statusCode == 201) {

@@ -82,7 +82,7 @@ class QuizpageController extends GetxController {
     //stringResponse = await response.stream.bytesToString();
    // print( "yaha pe hun");
     var request = await http.put(
-      Uri.parse('http://18.117.191.147:8000/score/$participantId') ,
+      Uri.parse('https://skillmatrix.onrender.com/score/$participantId') ,
       body: {
         "Score": score.toStringAsFixed(8),      //TODO: change the pre defined results
       },
@@ -94,16 +94,16 @@ class QuizpageController extends GetxController {
    //  print("sdasdasd");
     if (request.statusCode == 201) {
       Timer(const Duration(seconds: 30), () async {
-        final response = await http.post(Uri.parse("http://18.117.191.147:8000/winner/$matchId"),
+        final response = await http.post(Uri.parse("https://skillmatrix.onrender.com/winner/$matchId"),
             body: {}
         );
 
      // print("matchid$matchId");
       Timer(const Duration(seconds: 30), () async {
-        final response = await http.get(Uri.parse("http://18.117.191.147:8000/winner/show/$matchId"));
+        final response = await http.get(Uri.parse("https://skillmatrix.onrender.com/winner/show/$matchId"));
       //  print(response.body);
         var responseData = json.decode(response.body);
-        final levelResponse = await http.post(Uri.parse("http://18.117.191.147:8000/levels/$competitionId") , body: {});
+        final levelResponse = await http.post(Uri.parse("https://skillmatrix.onrender.com/levels/$competitionId") , body: {});
         var levelResponseData = json.decode(levelResponse.body);
         if(response.statusCode == 200) {
           if (responseData['username'] == username) {

@@ -73,7 +73,7 @@ class CompetitionController extends GetxController {
 
   Future<List<CompetitionModel>> getCompetitionData() async {
     final response = await http.get(
-        Uri.parse("http://18.117.191.147:8000/competition/"));
+        Uri.parse("https://skillmatrix.onrender.com/competition/"));
     var responseData = json.decode(response.body.toString());
     // var responseData = [
     //   {
@@ -103,7 +103,7 @@ class CompetitionController extends GetxController {
   Future<void> registerParticipant(String competitionId1) async {
     // print("id yeh hai $competitionId");
     var request = http.MultipartRequest(
-        'POST', Uri.parse('http://18.117.191.147:8000/participantview/'));
+        'POST', Uri.parse('https://skillmatrix.onrender.com/participantview/'));
     request.fields.addAll({
       "user": userId.toString(),
       "competition": competitionId1,

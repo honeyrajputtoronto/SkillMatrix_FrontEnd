@@ -43,7 +43,7 @@ class RegistrationController extends GetxController {
     if (formKey1.currentState!.validate()) {
       formKey1.currentState!.save();
       var request = http.MultipartRequest(
-          'POST', Uri.parse('http://18.117.191.147:8000/register/'));
+          'POST', Uri.parse('https://skillmatrix.onrender.com/register/'));
       request.fields.addAll({
         'username': userName,
         'email': email,
