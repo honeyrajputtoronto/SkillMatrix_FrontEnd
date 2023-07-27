@@ -29,7 +29,7 @@ class LoginController extends GetxController {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       var request = http.MultipartRequest(
-          'POST', Uri.parse('http://18.117.191.147:8000/login/'));
+          'POST', Uri.parse('https://skillmatrix.onrender.com/login/'));
       request.fields.addAll({'username': username, 'password': password});
       http.StreamedResponse response = await request.send();
       stringResponse = await response.stream.bytesToString();
