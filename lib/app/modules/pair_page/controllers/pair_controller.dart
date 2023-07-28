@@ -22,6 +22,7 @@ class PairController extends GetxController {
     WebAppReloadDetector.onReload(() {
       Get.toNamed(Routes.HOME);
     });
+
     Timer (
       const Duration(seconds: 7),
           () {
@@ -104,7 +105,7 @@ class PairController extends GetxController {
     // final response = await http.get(Uri.parse("http://127.0.0.1:8000/questions/$participantLevel"));   //TODO: add level to link
     // if (response.statusCode == 200) {
     //   questionData = json.decode(response.body);
-    final response = await rootBundle.loadString('json/questions.json');
+    final response = await rootBundle.loadString('assets/json/questions.json');
    // print(response);
     var responseData = json.decode(response);
   //  print(responseData);

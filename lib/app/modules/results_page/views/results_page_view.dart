@@ -27,7 +27,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                         SizedBox(
                           height: 20,
                         ),
-                        Image(image: AssetImage('images/round_winner.png') , height: 400, width: 400,),
+                        Image(image: AssetImage('assets/images/round_winner.png') , height: 400, width: 400,),
                         SizedBox(
                           height: 40,
                         ),
@@ -60,7 +60,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                         SizedBox(
                           height: 20,
                         ),
-                        Image(image: AssetImage('images/loser.png') , height: 300, width: 300,),
+                        Image(image: AssetImage('assets/images/loser.png') , height: 300, width: 300,),
                         SizedBox(
                           height: 20,
                         ),
@@ -99,7 +99,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                     SizedBox(
                       height: 10,
                     ),
-                    Image(image: AssetImage('images/winner.png')),
+                    Image(image: AssetImage('assets/images/winner.png')),
                     SizedBox(
                       height: 10,
                     ),

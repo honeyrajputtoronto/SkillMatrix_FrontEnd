@@ -12,12 +12,12 @@ Random random = Random();
 class PairView extends GetView<PairController> {
   const PairView({Key? key}) : super(key: key);
   final List<String> imagePaths = const [
-    'participants/1.png',
-    'participants/2.png',
-    'participants/3.png',
-    'participants/4.png',
-    'participants/5.png',
-    'participants/6.png',
+    'assets/participants/1.png',
+    'assets/participants/2.png',
+    'assets/participants/3.png',
+    'assets/participants/4.png',
+    'assets/participants/5.png',
+    'assets/participants/6.png',
     // Add more image paths here
   ];
 

@@ -99,7 +99,7 @@
       "choice2": "SELECT name\nFROM instructor|\nWHERE salary BETWEEN 90000 AND 100000;",
       "choice3": "SELECT name\nFROM instructor1\nWHERE salary BETWEEN 90000 AND 100000;",
       "choice4": "SELECT name\nFROM instructor!\nWHERE salary <= 90000 AND salary>=100000;",
-      "correct_ans": "SELECT name\nFROM instructor1\nWHERE salary BETWEEN 90000 AND 100000",
+      "correct_ans": "SELECT name\nFROM instructor1\nWHERE salary BETWEEN 90000 AND 100000;",
       "level": 2
     },
     {
