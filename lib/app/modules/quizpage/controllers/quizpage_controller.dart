@@ -103,13 +103,13 @@ class QuizpageController extends GetxController {
         final response = await http.get(Uri.parse("https://skillmatrix.onrender.com/winner/show/$matchId"));
       //  print(response.body);
         var responseData = json.decode(response.body);
-        final levelResponse = await http.post(Uri.parse("https://skillmatrix.onrender.com/levels/$competitionId") , body: {});
+        final levelResponse = await http.post(Uri.parse("https://skillmatrix.onrender.com/levels/$competitionId/${participantLevel + 1}") , body: {});
         var levelResponseData = json.decode(levelResponse.body);
-        if(response.statusCode == 200) {
+        if(response.statusCode == 201) {
           if (responseData['username'] == username) {
             // print(levelResponseData['total_level']);
             // print(participantLevel);
-            if (levelResponseData['total_level'] == participantLevel) {
+            if (levelResponseData['next_level'] == false) {
               isCompetitionWinner.value = true;
               // print("1111111111");
               // print(isCompetitionWinner.value);
