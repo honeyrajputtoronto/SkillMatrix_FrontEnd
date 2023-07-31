@@ -84,48 +84,53 @@ class QuizpageController extends GetxController {
     var request = await http.put(
       Uri.parse('https://skillmatrix.onrender.com/score/$participantId') ,
       body: {
-        "Score": score.toStringAsFixed(8),      //TODO: change the pre defined results
+        "Score": score.toStringAsFixed(8),
       },
     );
-   //  print(participantId);
-   //  print(request.statusCode);
-   //  print("sdasdasd");
-   // print(json.decode(request.body));
-   //  print("sdasdasd");
+    // print(participantId);
+    // print(request.statusCode);
+    // print("sdasdasd");
+    // print(json.decode(request.body));
+    // print("sdasdasd");
     if (request.statusCode == 201) {
       Timer(const Duration(seconds: 30), () async {
         final response = await http.post(Uri.parse("https://skillmatrix.onrender.com/winner/$matchId"),
             body: {}
         );
 
-     // print("matchid$matchId");
+     //print("matchid$matchId");
       Timer(const Duration(seconds: 30), () async {
         final response = await http.get(Uri.parse("https://skillmatrix.onrender.com/winner/show/$matchId"));
-      //  print(response.body);
+      // print(response.body);
         var responseData = json.decode(response.body);
         final levelResponse = await http.post(Uri.parse("https://skillmatrix.onrender.com/levels/$competitionId/${participantLevel + 1}") , body: {});
         var levelResponseData = json.decode(levelResponse.body);
-        if(response.statusCode == 201) {
+        // print(levelResponseData);
+        // print(response.statusCode);
+        // print(username);
+        // print(responseData['username']);
+        if(response.statusCode == 200) {
           if (responseData['username'] == username) {
-            // print(levelResponseData['total_level']);
+            // print(levelResponseData['next_level']);
             // print(participantLevel);
+            // print(levelResponseData['next_level'] == false);
             if (levelResponseData['next_level'] == false) {
               isCompetitionWinner.value = true;
-              // print("1111111111");
-              // print(isCompetitionWinner.value);
+             // print("1111111111");
+             // print(isCompetitionWinner.value);
               Get.toNamed(Routes.RESULTS_PAGE, arguments: {
                 'winner': [responseData['username']],
               });
             }
             else {
-            //  print("2222222222");
+            // print("2222222222");
               Get.toNamed(Routes.RESULTS_PAGE, arguments: {
                 'winner': [responseData['username']],
               });
             }
           }
           else{
-          //  print("333333333333");
+          // print("333333333333");
             Get.toNamed(Routes.RESULTS_PAGE, arguments: {
               'winner': [responseData['username']],
             });
