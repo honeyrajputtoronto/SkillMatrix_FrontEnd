@@ -49,26 +49,13 @@ class PairController extends GetxController {
 
 
   void getUserpair() async {
-    //print(participantLevel);
     participantLevel++;
-    // var request = http.MultipartRequest(
-    //     'POST', Uri.parse('http://127.0.0.1:8000/pair/$participantLevel'));
-    // request.fields.addAll({});
-    // http.StreamedResponse response = await request.send();
-    // stringResponse = await response.stream.bytesToString();
-   // print(participantLevel);
     var response = await http.post(Uri.parse('https://skillmatrix.onrender.com/pair/$participantLevel') , body: {});
-   // print(response.statusCode);
-   // print(response.body);
-    if (response.statusCode == 201) {
+    response = await http.get(Uri.parse('https://skillmatrix.onrender.com/pair/$participantLevel'));
+    if (response.statusCode == 200) {
     final json = await jsonDecode(response.body);
-      // print(json['pair'][0]);
-      // print(username);
       int playerIndex=0;
       for(;playerIndex < json['pair'].length;playerIndex++) {
-        // print(playerIndex);
-        // print(json['pair'][playerIndex]['player']);
-        // print(username);
         if (json['pair'][playerIndex]['player'] == username) {
           break;
         }

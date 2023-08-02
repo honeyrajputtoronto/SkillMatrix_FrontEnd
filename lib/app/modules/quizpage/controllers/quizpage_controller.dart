@@ -105,8 +105,8 @@ class QuizpageController extends GetxController {
         var responseData = json.decode(response.body);
         final levelResponse = await http.post(Uri.parse("https://skillmatrix.onrender.com/levels/$competitionId/${participantLevel + 1}") , body: {});
         var levelResponseData = json.decode(levelResponse.body);
-        // print(levelResponseData);
-        // print(response.statusCode);
+        print(levelResponseData);
+        print(response.statusCode);
         // print(username);
         // print(responseData['username']);
         if(response.statusCode == 200) {
