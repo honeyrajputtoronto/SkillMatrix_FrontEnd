@@ -34,7 +34,7 @@ class PairView extends GetView<PairController> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("Round ${participantLevel +1}",
+                      Text("Round $participantLevel",
                       style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,

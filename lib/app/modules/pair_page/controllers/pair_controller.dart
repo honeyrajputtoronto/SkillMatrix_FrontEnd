@@ -49,7 +49,11 @@ class PairController extends GetxController {
 
 
   void getUserpair() async {
-    participantLevel++;
+    // if(participantLevel == 0) {
+      participantLevel++;
+    // } else {
+    //   participantLevel = participantLevel + 2;
+    // }
     var response = await http.post(Uri.parse('https://skillmatrix.onrender.com/pair/$participantLevel') , body: {});
     response = await http.get(Uri.parse('https://skillmatrix.onrender.com/pair/$participantLevel'));
     if (response.statusCode == 200) {
