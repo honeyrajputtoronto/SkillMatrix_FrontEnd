@@ -163,7 +163,7 @@ class QuizpageController extends GetxController {
     if (selectedOption == questionData[index]["correct_ans"]) {
       DateTime dateTimeAfterEnd = DateTime.now();
       var difference1 = dateTimeAfterEnd.difference(dateTime);
-      int difference2 = difference1.inSeconds + (dateTimeAfterEnd.millisecond - dateTime.millisecond).abs();
+      int difference2 = difference1.inMilliseconds + (dateTimeAfterEnd.millisecond - dateTime.millisecond).abs();
 
      // print("````${difference2}");
       score += 1 / difference2;
