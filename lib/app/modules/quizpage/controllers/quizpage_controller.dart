@@ -82,7 +82,7 @@ class QuizpageController extends GetxController {
     //stringResponse = await response.stream.bytesToString();
    // print( "yaha pe hun");
     var request = await http.put(
-      Uri.parse('https://skillmatrix.onrender.com/score/$participantId') ,
+      Uri.parse('https://skillmatrix.azurewebsites.net/score/$participantId') ,
       body: {
         "Score": score.toStringAsFixed(8),
       },
@@ -94,16 +94,16 @@ class QuizpageController extends GetxController {
     // print("sdasdasd");
     if (request.statusCode == 201) {
       Timer(const Duration(seconds: 30), () async {
-        final response = await http.post(Uri.parse("https://skillmatrix.onrender.com/winner/$matchId"),
+        final response = await http.post(Uri.parse("https://skillmatrix.azurewebsites.net/winner/$matchId"),
             body: {}
         );
 
      //print("matchid$matchId");
       Timer(const Duration(seconds: 30), () async {
-        final response = await http.get(Uri.parse("https://skillmatrix.onrender.com/winner/show/$matchId"));
+        final response = await http.get(Uri.parse("https://skillmatrix.azurewebsites.net/winner/show/$matchId"));
       // print(response.body);
         var responseData = json.decode(response.body);
-        final levelResponse = await http.post(Uri.parse("https://skillmatrix.onrender.com/levels/$competitionId/${participantLevel + 1}") , body: {});
+        final levelResponse = await http.post(Uri.parse("https://skillmatrix.azurewebsites.net/levels/$competitionId/${participantLevel + 1}") , body: {});
         var levelResponseData = json.decode(levelResponse.body);
         print(levelResponseData);
         print(response.statusCode);

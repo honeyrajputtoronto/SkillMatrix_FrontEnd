@@ -54,8 +54,8 @@ class PairController extends GetxController {
     // } else {
     //   participantLevel = participantLevel + 2;
     // }
-    var response = await http.post(Uri.parse('https://skillmatrix.onrender.com/pair/$participantLevel') , body: {});
-    response = await http.get(Uri.parse('https://skillmatrix.onrender.com/pair/$participantLevel'));
+    var response = await http.post(Uri.parse('https://skillmatrix.azurewebsites.net/pair/$participantLevel') , body: {});
+    response = await http.get(Uri.parse('https://skillmatrix.azurewebsites.net/pair/$participantLevel'));
     if (response.statusCode == 200) {
     final json = await jsonDecode(response.body);
       int playerIndex=0;

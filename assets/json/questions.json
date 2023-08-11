@@ -42,22 +42,22 @@
     },
     {
       "question_id": 5,
-      "question_text": "Which of the following provides the ability to query information from the database and insert tuples into, delete tuples from, and modify tuples in the database?",
-      "choice1": "DML(Data Manipulation Language)",
-      "choice2": "DDL(Data Definition Language)",
-      "choice3": "Query",
-      "choice4": "Relational Schema",
-      "correct_ans": "DML(Data Manipulation Language)",
+      "question_text": "In mathematical term Table is referred as?",
+      "choice1": "Relation",
+      "choice2": "Attribute",
+      "choice3": "Tuple",
+      "choice4": " Domain",
+      "correct_ans": "Relation",
       "level": 1
     },
     {
       "question_id": 6,
-      "question_text": "Which of the following provides the ability to query information from the database and insert tuples into, delete tuples from, and modify tuples in the database?",
-      "choice1": "DML(Data Manipulation Language)",
-      "choice2": "DDL(Data Definition Language)",
-      "choice3": "Query",
-      "choice4": "Relational Schema",
-      "correct_ans": "DML(Data Manipulation Language)",
+      "question_text": " Which of the following is not a level of data abstraction?",
+      "choice1": "Physical Level",
+      "choice2": "Critical Level",
+      "choice3": "Logical Level",
+      "choice4": " View Level",
+      "correct_ans": "Critical Level",
       "level": 1
     }
   ],
@@ -99,7 +99,7 @@
       "choice2": "SELECT name\nFROM instructor|\nWHERE salary BETWEEN 90000 AND 100000;",
       "choice3": "SELECT name\nFROM instructor1\nWHERE salary BETWEEN 90000 AND 100000;",
       "choice4": "SELECT name\nFROM instructor!\nWHERE salary <= 90000 AND salary>=100000;",
-      "correct_ans": "SELECT name\nFROM instructor1\nWHERE salary BETWEEN 90000 AND 100000;",
+      "correct_ans": "SELECT name\nFROM instructor1\nWHERE salary BETWEEN 90000 AND 100000",
       "level": 2
     },
     {
@@ -448,12 +448,12 @@
     },
     {
       "question_id": 44,
-      "question_text": "What is SVG?",
-      "choice1": "Scalable Vector Graphics",
-      "choice2": "Scalable Video Graphics",
-      "choice3": "System Vector Graphics",
-      "choice4": "None Of These",
-      "correct_ans": "Scalable Vector Graphics",
+      "question_text": "Which of the following in not Outer join?",
+      "choice1": "Left outer join",
+      "choice2": "Right outer join",
+      "choice3": "Full outer join",
+      "choice4": "All of the above",
+      "correct_ans": "All of the above",
       "level": 8
     },
     {
@@ -510,12 +510,12 @@
     },
     {
       "question_id": 50,
-      "question_text": "What is SVG?",
-      "choice1": "Scalable Vector Graphics",
-      "choice2": "Scalable Video Graphics",
-      "choice3": "System Vector Graphics",
-      "choice4": "Both B & C",
-      "correct_ans": "Both B & C",
+      "question_text": "Which of the following is not binary operation?",
+      "choice1": " Union",
+      "choice2": "Project",
+      "choice3": "Set Difference",
+      "choice4": " Cartesian Product",
+      "correct_ans": " Project",
       "level": 9
     },
     {
@@ -621,5 +621,5 @@
       "level": 10
     }
   ]
-  }
+}
   

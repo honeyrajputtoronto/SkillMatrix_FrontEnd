@@ -19,9 +19,9 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    WebAppReloadDetector.onReload(() {
-      Get.toNamed(Routes.HOME);
-    });
+    // WebAppReloadDetector.onReload(() {
+    //   Get.toNamed(Routes.HOME);
+    // });
     super.onInit();
   }
 
@@ -29,7 +29,7 @@ class LoginController extends GetxController {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       var request = http.MultipartRequest(
-          'POST', Uri.parse('https://skillmatrix.onrender.com/login/'));
+          'POST', Uri.parse('https://skillmatrix.azurewebsites.net/login/'));
       request.fields.addAll({'username': username, 'password': password});
       http.StreamedResponse response = await request.send();
       stringResponse = await response.stream.bytesToString();
