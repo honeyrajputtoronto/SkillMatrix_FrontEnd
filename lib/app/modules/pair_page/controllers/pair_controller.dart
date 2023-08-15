@@ -19,6 +19,7 @@ class PairController extends GetxController {
 
   @override
   void onInit() {
+
     WebAppReloadDetector.onReload(() {
       Get.toNamed(Routes.HOME);
     });
@@ -50,7 +51,7 @@ class PairController extends GetxController {
 
   void getUserpair() async {
     // if(participantLevel == 0) {
-      participantLevel++;
+    participantLevel++;
     // } else {
     //   participantLevel = participantLevel + 2;
     // }

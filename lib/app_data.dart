@@ -15,5 +15,6 @@ int competitionHour = 0;
 int competitionMinute = 0;
 int competitionSecond = 0;
 int participantLevel = 0;
+int round = 1;
 RxBool isCompetitionWinner = false.obs;
 String baseUrl = 'http://127.0.0.1:8000/';
