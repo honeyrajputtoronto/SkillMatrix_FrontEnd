@@ -19,10 +19,12 @@ class QuizpageView extends GetView<QuizpageController> {
                 height: 100,
                 child: Center(child: CircularProgressIndicator()),
               )
-            : Column(
+            : Wrap(
                 children: [
-                  Expanded(
+                  SizedBox(
+                    height: Get.height,
                     child: PageView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       controller: controller.pageController,
                       itemCount: questionData.length ,
                       itemBuilder: (context, index) {
@@ -30,8 +32,8 @@ class QuizpageView extends GetView<QuizpageController> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  const SizedBox(height: 16),
+                  // const SizedBox(height: 16),
+                  // const SizedBox(height: 16),
                 ],
               ),
       ),
