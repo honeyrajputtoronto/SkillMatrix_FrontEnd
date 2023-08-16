@@ -17,8 +17,6 @@ import 'package:http/http.dart' as http;
 
 class CompetitionController extends GetxController {
 
-
-
   RxBool isLoading = true.obs;
   RxBool isButtonEnable = false.obs;
   late int length;
@@ -29,7 +27,7 @@ class CompetitionController extends GetxController {
   @override
   Future<void> onInit() async {
     WebAppReloadDetector.onReload(() {
-      Get.toNamed(Routes.HOME);
+      Get.offAllNamed(Routes.HOME);
     });
     //
     // questionData = [];

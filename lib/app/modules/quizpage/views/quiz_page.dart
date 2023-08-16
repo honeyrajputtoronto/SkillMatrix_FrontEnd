@@ -21,7 +21,7 @@ class _QuizPageState extends State<QuizPage> {
     DateTime dateTime = DateTime.now();
     final String question = questionData[widget.index]["question_text"];
    // final int noOfOptions = questionData[widget.index]["answer_choices"].length;
-    const int noOfOptions = 4;
+    int noOfOptions = questionData[widget.index].length - 4;
 
     // final options = question['options'] as Map<String, dynamic>;
 
