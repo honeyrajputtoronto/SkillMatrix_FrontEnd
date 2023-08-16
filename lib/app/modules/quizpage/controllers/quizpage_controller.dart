@@ -25,7 +25,7 @@ class QuizpageController extends GetxController {
   @override
   Future<void> onInit() async {
     WebAppReloadDetector.onReload(() {
-      Get.toNamed(Routes.HOME);
+      Get.offAllNamed(Routes.HOME);
     });
     super.onInit();
     //isLoading.value = true;

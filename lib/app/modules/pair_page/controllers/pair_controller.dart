@@ -21,7 +21,7 @@ class PairController extends GetxController {
   void onInit() {
 
     WebAppReloadDetector.onReload(() {
-      Get.toNamed(Routes.HOME);
+      Get.offAllNamed(Routes.HOME);
     });
 
     Timer (
