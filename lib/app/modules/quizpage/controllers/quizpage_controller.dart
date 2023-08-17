@@ -18,8 +18,8 @@ class QuizpageController extends GetxController {
   RxBool isOptionSelected = false.obs;
   RxBool isAnswerCorrect = false.obs;
   RxBool isTimeOver = false.obs;
-  int start = 30;
-  RxInt current = 30.obs;
+  int start = 15;
+  RxInt current = 15.obs;
  // late String stringResponse;
 
   @override
@@ -190,7 +190,7 @@ class QuizpageController extends GetxController {
       isTimeOver.value = true;
       isOptionSelected.value = false;
       isAnswerCorrect.value = false;
-      current.value = 30;
+      current.value = 15;
       sub.cancel();
     });
   }

@@ -104,7 +104,7 @@ class _QuizPageState extends State<QuizPage> {
           if(widget.controller.isTimeOver.isTrue ){
             //print("Time Over");
             widget.controller.nextQuestion();
-            widget.controller.current.value = 5;
+            widget.controller.current.value = 15;
             widget.controller.isTimeOver.value = false;
             return const Center(child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
