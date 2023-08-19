@@ -106,20 +106,26 @@ class _QuizPageState extends State<QuizPage> {
             widget.controller.nextQuestion();
             widget.controller.current.value = 15;
             widget.controller.isTimeOver.value = false;
-            return const Center(child: Column(
+            widget.controller.startTimer1();
+            return Center(child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "Quiz Completed",
                   style: TextStyle(
                       color: Colors.white, fontSize: 20),
                 ),
-                SizedBox(height: 20,),
-                CircularProgressIndicator(),
-                SizedBox(height: 20,),
-                Text(
+                const SizedBox(height: 20,),
+                const CircularProgressIndicator(),
+                const SizedBox(height: 20,),
+                const Text(
                   "Getting Results... Please Wait",
-                  style: TextStyle(color: Colors.white, fontSize: 20),)
+                  style: TextStyle(color: Colors.white, fontSize: 20),),
+                const SizedBox(height: 20,),
+                Obx(() => Text(
+                  "Next Question in ${widget.controller.current1} seconds",
+                  style: const TextStyle(color: Colors.white, fontSize: 30),
+                ),)
               ],
             ));
           }
@@ -224,19 +230,20 @@ class _QuizPageState extends State<QuizPage> {
                             height: 20,
                           ),
                           widget.index == questionData.length - 1
-                              ? const Column(
+                              ? Column(
                                 children: [
-                                  Text(
+                                  const Text(
                                       "Quiz Completed",
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 20),
                                     ),
-                                  SizedBox(height: 20,),
-                                  CircularProgressIndicator(),
-                                  SizedBox(height: 20,),
-                                  Text(
-                                    "Getting Results... Please Wait",
-                                    style: TextStyle(color: Colors.white, fontSize: 20),)
+                                  const SizedBox(height: 20,),
+                                  const CircularProgressIndicator(),
+                                  const SizedBox(height: 20,),
+                                  Obx(() => Text(
+                                    "Please wait for your opponent to answer... ${widget.controller.current} seconds",
+                                    style: const TextStyle(color: Colors.white, fontSize: 20),
+                                  ),)
                                 ],
                               )
                               :
@@ -282,19 +289,20 @@ class _QuizPageState extends State<QuizPage> {
                             height: 20,
                           ),
                           widget.index == questionData.length - 1
-                              ? const Column(
+                              ? Column(
                             children: [
-                              Text(
+                              const Text(
                                 "Quiz Completed",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
-                              SizedBox(height: 20,),
-                              CircularProgressIndicator(),
-                              SizedBox(height: 20,),
-                              Text(
-                                "Getting Results... Please Wait",
-                                style: TextStyle(color: Colors.white, fontSize: 20),)
+                              const SizedBox(height: 20,),
+                              const CircularProgressIndicator(),
+                              const SizedBox(height: 20,),
+                              Obx(() => Text(
+                                "Please wait for your opponent to answer... ${widget.controller.current} seconds",
+                                style: const TextStyle(color: Colors.white, fontSize: 20),
+                              ),)
                             ],
                           )
                               :

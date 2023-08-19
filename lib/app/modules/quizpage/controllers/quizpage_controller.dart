@@ -20,6 +20,8 @@ class QuizpageController extends GetxController {
   RxBool isTimeOver = false.obs;
   int start = 15;
   RxInt current = 15.obs;
+  int start1 = 60;
+  RxInt current1 = 60.obs;
  // late String stringResponse;
 
   @override
@@ -191,6 +193,26 @@ class QuizpageController extends GetxController {
       isOptionSelected.value = false;
       isAnswerCorrect.value = false;
       current.value = 15;
+      sub.cancel();
+    });
+  }
+
+  void startTimer1() {
+    CountdownTimer countDownTimer = CountdownTimer(
+      Duration(seconds: start1),
+      const Duration(seconds: 1),
+    );
+
+    var sub = countDownTimer.listen(null);
+    sub.onData((duration) {
+      current1.value = start1 - duration.elapsed.inSeconds;
+    });
+
+    sub.onDone(() {
+      // isTimeOver.value = true;
+      // isOptionSelected.value = false;
+      // isAnswerCorrect.value = false;
+      // current.value = 15;
       sub.cancel();
     });
   }

@@ -26,9 +26,9 @@ class CompetitionController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    WebAppReloadDetector.onReload(() {
-      Get.offAllNamed(Routes.HOME);
-    });
+    // WebAppReloadDetector.onReload(() {
+    //   Get.offAllNamed(Routes.HOME);
+    // });
     //
     // questionData = [];
     // matchId = '';

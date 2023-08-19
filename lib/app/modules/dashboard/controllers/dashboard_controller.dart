@@ -16,8 +16,8 @@ class DashboardController extends GetxController {
   RxBool isFirstClick = false.obs;
   late int length;
   dynamic argumentData = Get.arguments;
-  late int start ;
-  late int current ;
+  RxInt start = 0.obs ;
+  RxInt current = 0.obs ;
   late int timeDifference ;
 
 
@@ -25,7 +25,12 @@ class DashboardController extends GetxController {
   void onInit() async {
     //print(argumentData);
     await checkTime();
-    //print("timeDifference: $timeDifference");
+    start.value = timeDifference;
+    current.value = timeDifference;
+    startTimer();
+    // print("start: $start");
+    // print("current: $current");
+    // print("timeDifference: $timeDifference");
    // print("Time before: ${DateTime.now()}");
     //start = int.parse(argumentData) * 60;
     Timer(Duration(seconds: timeDifference > 5 ? timeDifference - 5 : 0), () {
@@ -83,17 +88,18 @@ class DashboardController extends GetxController {
 
   void startTimer() {
     CountdownTimer countDownTimer = CountdownTimer(
-      Duration(seconds: start),
+      Duration(seconds: start.value),
       const Duration(seconds: 1),
     );
 
     var sub = countDownTimer.listen(null);
     sub.onData((duration) {
-      current = start - duration.elapsed.inSeconds;
+      current.value = start.value - duration.elapsed.inSeconds;
+      // print(current.value);
     });
 
     sub.onDone(() {
-      current = 30;
+    //  current = 30;
       sub.cancel();
     });
   }
