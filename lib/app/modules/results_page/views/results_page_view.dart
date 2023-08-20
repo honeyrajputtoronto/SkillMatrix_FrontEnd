@@ -40,7 +40,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                           height: 20,
                         ),
                         Text(
-                          "Next round will start in a minute....",
+                          "Next round will start in few seconds....Please Wait",
                           style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold , color: Colors.white),
                         ),
@@ -73,7 +73,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                           height: 20,
                         ),
                         Text(
-                          "You will be redirected to the Competitions Page in a minute....",
+                          "You will be redirected to the Competitions Page in few seconds....",
                           style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold , color: Colors.white),
                         ),
@@ -112,7 +112,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                       height: 20,
                     ),
                     Text(
-                      "You will be redirected to the Competitions Page in a minute....",
+                      "You will be redirected to the Competitions Page in few seconds....",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold , color: Colors.white),
                     ),
