@@ -5,11 +5,11 @@ ThemeData getBlackWhiteTheme() {
   final ThemeData base = ThemeData.dark();
 
   return base.copyWith(
-    primaryColor: Colors.black,
+    primaryColor: const Color.fromARGB(255, 10, 22, 44),
     primaryColorLight: Colors.white,
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: const Color.fromARGB(255, 10, 22, 44),
     appBarTheme: const AppBarTheme(
-      color: Colors.black,
+      color: const Color.fromARGB(255, 10, 22, 44),
       elevation: 0, systemOverlayStyle: SystemUiOverlayStyle.light,
     ),
     textTheme: const TextTheme(

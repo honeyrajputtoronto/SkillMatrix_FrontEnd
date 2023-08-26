@@ -123,7 +123,7 @@ class _QuizPageState extends State<QuizPage> {
                   style: TextStyle(color: Colors.white, fontSize: 20),),
                 const SizedBox(height: 20,),
                 Obx(() => Text(
-                  "Next Question in ${widget.controller.current1} seconds",
+                  "Results in ${widget.controller.current1} seconds",
                   style: const TextStyle(color: Colors.white, fontSize: 30),
                 ),)
               ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 //import '../../../routes/app_pages.dart';
 import '../../../../app_data.dart';
 import '../controllers/login_controller.dart';
@@ -37,9 +38,11 @@ class LoginView extends GetView<LoginController> {
                       // You can add more complex email validation logic here if needed
                       return null;
                     },
-                    onSaved: (value) {
+                    onSaved: (value) async {
                       username = value!;
                       controller.username = value;
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.setString('username_value',value);
                     },
                   ),
                   const SizedBox(height: 16),

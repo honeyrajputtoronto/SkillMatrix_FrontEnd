@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutterwebapp_reload_detector/flutterwebapp_reload_detector.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../app_data.dart';
 import '../../../routes/app_pages.dart';
 import '../Models/CompetitionModel.dart';
@@ -26,9 +27,13 @@ class CompetitionController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    // WebAppReloadDetector.onReload(() {
-    //   Get.offAllNamed(Routes.HOME);
-    // });
+    final prefs = await SharedPreferences.getInstance();
+
+// Try reading data from the counter key. If it doesn't exist, return 0.
+    userId = prefs.getInt('userId') ?? userId;
+    WebAppReloadDetector.onReload(() {
+      Get.offAllNamed(Routes.COMPETITION);
+    });
     //
     // questionData = [];
     // matchId = '';
@@ -45,7 +50,7 @@ class CompetitionController extends GetxController {
 
     // timeFromApi = (await getTime()) as DateTime;
     // print(timeFromApi);
-    Future.delayed(const Duration(seconds: 10), () {
+    Future.delayed(const Duration(seconds: 5), () {
     //   // print("10 sec khtm");
       isLoading.value = false;
     //   // for (int i = 0; i < competitions.length; i++) {
@@ -67,7 +72,6 @@ class CompetitionController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
 
   Future<List<CompetitionModel>> getCompetitionData() async {
     final response = await http.get(
@@ -108,7 +112,8 @@ class CompetitionController extends GetxController {
     });
     http.StreamedResponse response = await request.send();
     stringResponse = await response.stream.bytesToString();
-    // print(stringResponse);
+    print(stringResponse);
+    print("${response.statusCode} $userId $competitionId1");
     if (response.statusCode == 201) {
       final json = await jsonDecode(stringResponse);
       participantId = json["participant_id"]!;

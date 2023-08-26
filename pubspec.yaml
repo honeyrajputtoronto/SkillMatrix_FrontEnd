@@ -26,6 +26,7 @@ dependencies:
   loading_animations: ^2.2.0
   loading_indicator: ^3.1.1
   sizer: ^2.0.15
+  blurrycontainer: ^1.0.2
 
 dev_dependencies: 
   flutter_lints: 2.0.1

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skillmatrix/app_data.dart';
 import '../../../routes/app_pages.dart';
@@ -26,6 +27,7 @@ class LoginController extends GetxController {
   }
 
   void submitForm() async {
+    final prefs = await SharedPreferences.getInstance();
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       var request = http.MultipartRequest(
@@ -33,6 +35,9 @@ class LoginController extends GetxController {
       request.fields.addAll({'username': username, 'password': password});
       http.StreamedResponse response = await request.send();
       stringResponse = await response.stream.bytesToString();
+      // print(stringResponse);
+      // print(response.statusCode);
+      // print(username + password);
       if (response.statusCode == 200) {
         final json = await jsonDecode(stringResponse);
         if (json['access_token'] != null) {
@@ -41,6 +46,9 @@ class LoginController extends GetxController {
          // await prefs?.setString('token', json['access_token']);
           accessToken = json['access_token'];
           userId = json['user_id'];
+          await prefs.setInt('userId',json['user_id']);
+          // print(prefs.getInt('userId'));
+          // print(prefs.getString('username_value'));
           Get.toNamed(Routes.COMPETITION);
          } else {
           Get.showSnackbar(const GetSnackBar(

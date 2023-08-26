@@ -10,6 +10,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
   const ResultsPageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    controller.startTimer();
     return Scaffold(
       // appBar: AppBar(
       //   title: const Text('Result'),
@@ -18,104 +19,104 @@ class ResultsPageView extends GetView<ResultsPageController> {
      // Obx(() =>
       isCompetitionWinner.isFalse
           ? controller.argumentData['winner'][0] == player.value
-              ? const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Image(image: AssetImage('assets/images/round_winner.png') , height: 400, width: 400,),
-                        SizedBox(
+                        const Image(image: AssetImage('assets/images/round_winner.png') , height: 400, width: 400,),
+                        const SizedBox(
                           height: 40,
                         ),
-                        Text(
+                        const Text(
                           "You Won this round !!!",
                           style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold , color: Colors.green),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Text(
-                          "Next round will start in few seconds....Please Wait",
-                          style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold , color: Colors.white),
-                        ),
-                        SizedBox(
+                        Obx(() => Text("LeaderBoard will be in ${controller.current} seconds",
+                            style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white))),
+                        const SizedBox(
                           height: 20,
                         ),
                       ],
                     ),
                   ),
                 )
-              : const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
+              : Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Image(image: AssetImage('assets/images/loser.png') , height: 300, width: 300,),
-                        SizedBox(
+                        const Image(image: AssetImage('assets/images/loser.png') , height: 300, width: 300,),
+                        const SizedBox(
                           height: 20,
                         ),
-                        Text(
+                        const Text(
                           "Your Opponent Won this round !!!",
                           style:
                           TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.red),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Text(
-                          "You will be redirected to the Competitions Page in few seconds....",
-                          style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold , color: Colors.white),
-                        ),
+                        Obx(() => Text("LeaderBoard will be in ${controller.current} seconds",
+                            style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white))),
                       ],
                     ),
                   ),
                 )
           :
-      const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
+       Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Text(
+                    const Text(
                       "Winner, Winner, Quiz Master!!!",
                       style:
                           TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.green),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Image(image: AssetImage('assets/images/winner.png')),
-                    SizedBox(
+                    const Image(image: AssetImage('assets/images/winner.png')),
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                    const Text(
                       "You Won this Competition !!!",
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold , color: Colors.green),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Text(
-                      "You will be redirected to the Competitions Page in few seconds....",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold , color: Colors.white),
-                    ),
+                    Obx(() => Text("LeaderBoard will be in ${controller.current} seconds",
+                        style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white))),
                   ],
                 ),
               ),

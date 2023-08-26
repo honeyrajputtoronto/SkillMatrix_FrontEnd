@@ -31,58 +31,82 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Skill Matrix',
-        ),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            MaterialButton(
-              onPressed: () => Get.toNamed(Routes.REGISTRATION),
-              child: Container(
-                width: 150,
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColorLight,
-                    borderRadius: BorderRadius.circular(20)),
-                child: const Center(
-                  child: Text("Registration",
-                      style: TextStyle(
-                        fontSize: 20,
-                      )),
+      // appBar: AppBar(
+      //   leading :Image.asset(
+      //     'assets/images/logo.png',
+      //     width: 300,
+      //   ),
+      //   title: const Text(
+      //     'Skill Matrix',
+      //   ),
+      //   centerTitle: true,
+      // ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset(
+                  'assets/images/logo.png',
+                  width: 300,
                 ),
-              ),
+              ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            MaterialButton(
-               onPressed: () => Get.toNamed(Routes.LOGIN),
-              //onPressed: () => getRoute(),
-              child: Container(
-                width: 150,
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColorLight,
-                    borderRadius: BorderRadius.circular(20)),
-                child: const Center(
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      fontSize: 20,
+          ),
+          Container(
+            height: Get.height *0.8,
+            width: Get.width,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  MaterialButton(
+                    onPressed: () => Get.toNamed(Routes.REGISTRATION),
+                    child: Container(
+                      width: 150,
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColorLight,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: const Center(
+                        child: Text("Registration",
+                            style: TextStyle(
+                              fontSize: 20,
+                            )),
+                      ),
                     ),
                   ),
-                ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  MaterialButton(
+                     onPressed: () => Get.toNamed(Routes.LOGIN),
+                    //onPressed: () => getRoute(),
+                    child: Container(
+                      width: 150,
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColorLight,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: const Center(
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

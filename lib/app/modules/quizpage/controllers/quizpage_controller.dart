@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutterwebapp_reload_detector/flutterwebapp_reload_detector.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:skillmatrix/app/modules/login/views/login_view.dart';
 import 'package:skillmatrix/app/routes/app_pages.dart';
 import 'package:http/http.dart' as http;
@@ -102,17 +103,19 @@ class QuizpageController extends GetxController {
 
      //print("matchid$matchId");
       Timer(const Duration(seconds: 30), () async {
+        final prefs = await SharedPreferences.getInstance();
         final response = await http.get(Uri.parse("https://skillmatrix.azurewebsites.net/winner/show/$matchId"));
-      // print(response.body);
+        // print("`````" + response.body);
         var responseData = json.decode(response.body);
         final levelResponse = await http.post(Uri.parse("https://skillmatrix.azurewebsites.net/levels/$competitionId/${participantLevel + 1}") , body: {});
         var levelResponseData = json.decode(levelResponse.body);
-        print(levelResponseData);
-        print(response.statusCode);
-        // print(username);
+        // print(participantLevel);
+        // print(levelResponseData);
+        // print(response.statusCode);
+        // // print(username);
         // print(responseData['username']);
         if(response.statusCode == 200) {
-          if (responseData['username'] == username) {
+          if (responseData['username'] == prefs.getString('username_value')) {
             // print(levelResponseData['next_level']);
             // print(participantLevel);
             // print(levelResponseData['next_level'] == false);
@@ -126,13 +129,15 @@ class QuizpageController extends GetxController {
             }
             else {
             // print("2222222222");
+            // print(isCompetitionWinner.value);
               Get.toNamed(Routes.RESULTS_PAGE, arguments: {
                 'winner': [responseData['username']],
               });
             }
           }
           else{
-          // print("333333333333");
+          print("333333333333");
+          print(isCompetitionWinner.value);
             Get.toNamed(Routes.RESULTS_PAGE, arguments: {
               'winner': [responseData['username']],
             });
@@ -165,10 +170,15 @@ class QuizpageController extends GetxController {
     if (selectedOption == questionData[index]["correct_ans"]) {
       DateTime dateTimeAfterEnd = DateTime.now();
       var difference1 = dateTimeAfterEnd.difference(dateTime);
-      int difference2 = difference1.inMilliseconds + (dateTimeAfterEnd.millisecond - dateTime.millisecond).abs();
+      var difference2 = difference1.inMilliseconds + (dateTimeAfterEnd.millisecond - dateTime.millisecond).abs();
+      var difference3 = difference2 / 1000;
+      var difference4 = difference3 / 15;
+      var difference5 = difference4 / 2;
+      var difference6 = 1 - difference5 ;
+      var difference7 = difference6 * 1000;
 
      // print("````${difference2}");
-      score += 1 / difference2;
+      score = difference7;
     //  print(score);
       return true;
     } else {

@@ -1,13 +1,15 @@
 import 'dart:async';
 import 'package:flutterwebapp_reload_detector/flutterwebapp_reload_detector.dart';
 import 'package:get/get.dart';
+import 'package:quiver/async.dart';
 import 'package:skillmatrix/app_data.dart';
 import '../../../routes/app_pages.dart';
 //import '../../login/views/login_view.dart';
 
 class ResultsPageController extends GetxController {
   dynamic argumentData = Get.arguments;
-
+  RxInt start = 20.obs ;
+  RxInt current = 20.obs ;
  // RxBool isWinner = false.obs;
 
   @override
@@ -22,7 +24,10 @@ class ResultsPageController extends GetxController {
        // print("a");
         Timer(const Duration(seconds: 15),
                 () async {
-             await Get.offAllNamed(Routes.PAIR);
+              await Get.toNamed(Routes.LEADERBOARD ,arguments: {
+                'winner': [argumentData['winner'][0]],
+              });
+            // await Get.offAllNamed(Routes.PAIR);
             });
       }
       else {
@@ -33,7 +38,10 @@ class ResultsPageController extends GetxController {
         //           await Get.toNamed(Routes.COMPETITION);
         //     });
         Future.delayed(const Duration(seconds: 15), () async {
-          await Get.offAllNamed(Routes.COMPETITION);
+          await Get.toNamed(Routes.LEADERBOARD,arguments: {
+            'winner': [argumentData['winner'][0]],
+          });
+          //await Get.offAllNamed(Routes.COMPETITION);
         },);
       }
       super.onInit();
@@ -44,11 +52,32 @@ class ResultsPageController extends GetxController {
 
       Timer(const Duration(seconds: 15),
               () async {
-                await Get.offAllNamed(Routes.COMPETITION);
+                await Get.toNamed(Routes.LEADERBOARD,arguments: {
+                  'winner': [argumentData['winner'][0]],
+                });
+               // await Get.offAllNamed(Routes.COMPETITION);
                 isCompetitionWinner.value = false;
           });
       super.onInit();
     }
+  }
+
+  void startTimer() {
+    CountdownTimer countDownTimer = CountdownTimer(
+      Duration(seconds: start.value),
+      const Duration(seconds: 1),
+    );
+
+    var sub = countDownTimer.listen(null);
+    sub.onData((duration) {
+      current.value = start.value - duration.elapsed.inSeconds;
+      // print(current.value);
+    });
+
+    sub.onDone(() {
+      //  current = 30;
+      sub.cancel();
+    });
   }
 
   @override

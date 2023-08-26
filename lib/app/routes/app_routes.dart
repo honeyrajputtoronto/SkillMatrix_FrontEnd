@@ -11,6 +11,7 @@ abstract class Routes {
   static const RESULTS_PAGE = _Paths.RESULTS_PAGE;
   static const COMPETITION = _Paths.COMPETITION;
   static const PAIR = _Paths.PAIR;
+  static const LEADERBOARD = _Paths.LEADERBOARD;
 }
 
 abstract class _Paths {
@@ -23,4 +24,6 @@ abstract class _Paths {
   static const RESULTS_PAGE = '/results-page';
   static const COMPETITION = '/competition';
   static const PAIR = '/pair';
+  static const LEADERBOARD = '/leaderboard';
+
 }

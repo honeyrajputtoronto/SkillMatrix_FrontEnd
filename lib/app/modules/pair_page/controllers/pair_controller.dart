@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutterwebapp_reload_detector/flutterwebapp_reload_detector.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skillmatrix/app/modules/login/views/login_view.dart';
 import '../../../routes/app_pages.dart';
 //import '../../login/views/login_view.dart';
@@ -50,6 +51,7 @@ class PairController extends GetxController {
 
 
   void getUserpair() async {
+    final prefs = await SharedPreferences.getInstance();
     // if(participantLevel == 0) {
     participantLevel++;
     // } else {
@@ -61,7 +63,7 @@ class PairController extends GetxController {
     final json = await jsonDecode(response.body);
       int playerIndex=0;
       for(;playerIndex < json['pair'].length;playerIndex++) {
-        if (json['pair'][playerIndex]['player'] == username) {
+        if (json['pair'][playerIndex]['player'] ==  prefs.getString('username_value')) {
           break;
         }
       }
