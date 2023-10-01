@@ -20,13 +20,13 @@ class QuizpageView extends GetView<QuizpageController> {
               Container(
                 height: double.maxFinite,
                 width: double.maxFinite,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: ExactAssetImage("assets/images/virtual.jpg"),
-                    fit: BoxFit.fill,
-                    alignment: Alignment.center,
-                  ),
-                ),
+                // decoration: const BoxDecoration(
+                //   image: DecorationImage(
+                //     image: ExactAssetImage("assets/images/virtual.jpg"),
+                //     fit: BoxFit.fill,
+                //     alignment: Alignment.center,
+                //   ),
+                // ),
               ),
               Wrap(
                   children: [

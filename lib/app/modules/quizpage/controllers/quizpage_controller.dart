@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutterwebapp_reload_detector/flutterwebapp_reload_detector.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,8 +26,57 @@ class QuizpageController extends GetxController {
   RxInt current1 = 60.obs;
  // late String stringResponse;
 
+  // Future getQuestions() async {      // TODO: remove this method
+  //   // final response = await http.get(Uri.parse("http://127.0.0.1:8000/questions/$participantLevel"));   //TODO: add level to link
+  //   // if (response.statusCode == 200) {
+  //   //   questionData = json.decode(response.body);
+  //   final response = await rootBundle.loadString('assets/json/sql.json');
+  //   // print(response);
+  //   var responseData = json.decode(response);
+  //   //  print(responseData);
+  //
+  //
+  //   // questionData = responseData['level$participantLevel'];   TODO: remove comment
+  //
+  //   questionData = responseData['level1'];
+  //
+  //   print(questionData);
+  //   //  print(questionData.isEmpty);
+  //   // questionData = [
+  //   //   {
+  //   //     "question_id": "8647d621-f28d-4eaf-858e-672dbb9dcc5d",
+  //   //     "question_text": "what is c stands for",
+  //   //     "choice1": "apple",
+  //   //     "choice2": "ball",
+  //   //     "choice3": "cat",
+  //   //     "choice4": "dog",
+  //   //     "correct_ans": "cat",
+  //   //     "level": 1
+  //   //   } ,
+  //   //   {
+  //   //     "question_id": "8647d621-f28d-4eaf-858e-672dbb9dcc5c",
+  //   //     "question_text": "what is a stands for",
+  //   //     "choice1": "apple",
+  //   //     "choice2": "ball",
+  //   //     "choice3": "cat",
+  //   //     "choice4": "dog",
+  //   //     "correct_ans": "apple",
+  //   //     "level": 1
+  //   //   }
+  //   // ];
+  //   // }
+  //   if(questionData.isEmpty) {
+  //     Get.showSnackbar(const GetSnackBar(
+  //       message: "Could not fetch data",
+  //     ));
+  //   }
+  //   // }
+  // }
+
+
   @override
   Future<void> onInit() async {
+    //await getQuestions();
     WebAppReloadDetector.onReload(() {
       Get.offAllNamed(Routes.HOME);
     });
@@ -83,53 +133,55 @@ class QuizpageController extends GetxController {
     // request.fields.addAll({'score': score.toString()});
     // http.StreamedResponse response = await request.send();
     //stringResponse = await response.stream.bytesToString();
-   // print( "yaha pe hun");
+   print( "yaha pe hun");
+   print("https://skillmatrixfinal.azurewebsites.net/score/$participantId");
+   print("{\"Score\": ${score.toStringAsFixed(8)},}");
     var request = await http.put(
-      Uri.parse('https://skillmatrix.azurewebsites.net/score/$participantId') ,
+      Uri.parse('https://skillmatrixfinal.azurewebsites.net/score/$participantId') ,
       body: {
         "Score": score.toStringAsFixed(8),
       },
     );
-    // print(participantId);
-    // print(request.statusCode);
-    // print("sdasdasd");
-    // print(json.decode(request.body));
-    // print("sdasdasd");
-    if (request.statusCode == 201) {
+    print(participantId);
+    print(request.statusCode);
+    print("sdasdasd");
+    print(json.decode(request.body));
+    print("sdasdasd");
+    if (request.statusCode == 200) {
       Timer(const Duration(seconds: 30), () async {
-        final response = await http.post(Uri.parse("https://skillmatrix.azurewebsites.net/winner/$matchId"),
+        final response = await http.post(Uri.parse("https://skillmatrixfinal.azurewebsites.net/winner/$matchId"),
             body: {}
         );
 
-     //print("matchid$matchId");
+     print("matchid$matchId");
       Timer(const Duration(seconds: 30), () async {
         final prefs = await SharedPreferences.getInstance();
-        final response = await http.get(Uri.parse("https://skillmatrix.azurewebsites.net/winner/show/$matchId"));
-        // print("`````" + response.body);
+        final response = await http.get(Uri.parse("https://skillmatrixfinal.azurewebsites.net/winner/show/$matchId"));
+        print("`````" + response.body);
         var responseData = json.decode(response.body);
-        final levelResponse = await http.post(Uri.parse("https://skillmatrix.azurewebsites.net/levels/$competitionId/${participantLevel + 1}") , body: {});
+        final levelResponse = await http.post(Uri.parse("https://skillmatrixfinal.azurewebsites.net/levels/$competitionId/${participantLevel + 1}") , body: {});
         var levelResponseData = json.decode(levelResponse.body);
-        // print(participantLevel);
-        // print(levelResponseData);
-        // print(response.statusCode);
-        // // print(username);
-        // print(responseData['username']);
+        print(participantLevel);
+        print(levelResponseData);
+        print(response.statusCode);
+        // print(username);
+        print(responseData['username']);
         if(response.statusCode == 200) {
           if (responseData['username'] == prefs.getString('username_value')) {
-            // print(levelResponseData['next_level']);
-            // print(participantLevel);
-            // print(levelResponseData['next_level'] == false);
+            print(levelResponseData['next_level']);
+            print(participantLevel);
+            print(levelResponseData['next_level'] == false);
             if (levelResponseData['next_level'] == false) {
               isCompetitionWinner.value = true;
-             // print("1111111111");
-             // print(isCompetitionWinner.value);
+             print("1111111111");
+             print(isCompetitionWinner.value);
               Get.toNamed(Routes.RESULTS_PAGE, arguments: {
                 'winner': [responseData['username']],
               });
             }
             else {
-            // print("2222222222");
-            // print(isCompetitionWinner.value);
+            print("2222222222");
+            print(isCompetitionWinner.value);
               Get.toNamed(Routes.RESULTS_PAGE, arguments: {
                 'winner': [responseData['username']],
               });
@@ -174,15 +226,14 @@ class QuizpageController extends GetxController {
       var difference3 = difference2 / 1000;
       var difference4 = difference3 / 15;
       var difference5 = difference4 / 2;
-      var difference6 = 1 - difference5 ;
+      var difference6 = 1 - difference5;
       var difference7 = difference6 * 1000;
+      // var difference7 = difference6 * 100000000;
 
-     // print("````${difference2}");
-      score = difference7;
-    //  print(score);
+      score = score + difference7;
+      print(score);
       return true;
     } else {
-      // print(score);
       return false;
     }
   }
@@ -222,7 +273,7 @@ class QuizpageController extends GetxController {
       // isTimeOver.value = true;
       // isOptionSelected.value = false;
       // isAnswerCorrect.value = false;
-      // current.value = 15;
+      current1.value = 60;
       sub.cancel();
     });
   }

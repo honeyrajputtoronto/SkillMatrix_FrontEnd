@@ -43,7 +43,7 @@ class RegistrationController extends GetxController {
     if (formKey1.currentState!.validate()) {
       formKey1.currentState!.save();
       var request = http.MultipartRequest(
-          'POST', Uri.parse('https://skillmatrix.azurewebsites.net/register/'));
+          'POST', Uri.parse('https://skillmatrixfinal.azurewebsites.net/register/'));
       request.fields.addAll({
         'username': userName,
         'email': email,

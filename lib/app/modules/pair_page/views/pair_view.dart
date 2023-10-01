@@ -27,18 +27,18 @@ class PairView extends GetView<PairController> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 0.0),
           child: Obx(
             () => controller.isLoading.value
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("Round ${round++}",
+                     Obx(()=> Text("$round",
                       style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),),
+                          color: Colors.white),),),
                       SizedBox(
                         height: 200,
                         child: ScrollLoopAutoScroll(

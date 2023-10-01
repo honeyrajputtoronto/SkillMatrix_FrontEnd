@@ -12,6 +12,7 @@ abstract class Routes {
   static const COMPETITION = _Paths.COMPETITION;
   static const PAIR = _Paths.PAIR;
   static const LEADERBOARD = _Paths.LEADERBOARD;
+  static const PROFILE = _Paths.PROFILE;
 }
 
 abstract class _Paths {
@@ -25,5 +26,6 @@ abstract class _Paths {
   static const COMPETITION = '/competition';
   static const PAIR = '/pair';
   static const LEADERBOARD = '/leaderboard';
+  static const PROFILE = '/profile';
 
 }

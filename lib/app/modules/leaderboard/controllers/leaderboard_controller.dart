@@ -22,7 +22,8 @@ class LeaderBoardController extends GetxController {
       Get.offAllNamed(Routes.HOME);
     });
     final response = await http.get(
-        Uri.parse("https://skillmatrix.azurewebsites.net/score/"));
+        Uri.parse("https://skillmatrixfinal.azurewebsites.net/score/"));
+    responseData = json.decode(response.body.toString());
     responseData = json.decode(response.body.toString());
     if (response.statusCode == 200) {
       // print("11"+responseData["score"].length.toString());

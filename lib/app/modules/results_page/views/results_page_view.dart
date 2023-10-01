@@ -20,10 +20,11 @@ class ResultsPageView extends GetView<ResultsPageController> {
       isCompetitionWinner.isFalse
           ? controller.argumentData['winner'][0] == player.value
               ? Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal : 8.0),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(
                           height: 20,
@@ -34,6 +35,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                         ),
                         const Text(
                           "You Won this round !!!",
+                          textAlign: TextAlign.center,
                           style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold , color: Colors.green),
                         ),
@@ -41,6 +43,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                           height: 20,
                         ),
                         Obx(() => Text("LeaderBoard will be in ${controller.current} seconds",
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -53,10 +56,11 @@ class ResultsPageView extends GetView<ResultsPageController> {
                   ),
                 )
               : Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal : 8.0),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(
                           height: 20,
@@ -67,6 +71,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                         ),
                         const Text(
                           "Your Opponent Won this round !!!",
+                          textAlign: TextAlign.center,
                           style:
                           TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.red),
                         ),
@@ -74,6 +79,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                           height: 20,
                         ),
                         Obx(() => Text("LeaderBoard will be in ${controller.current} seconds",
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -84,16 +90,18 @@ class ResultsPageView extends GetView<ResultsPageController> {
                 )
           :
        Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal : 8.0),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(
                       height: 20,
                     ),
                     const Text(
                       "Winner, Winner, Quiz Master!!!",
+                      textAlign: TextAlign.center,
                       style:
                           TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.green),
                     ),
@@ -106,6 +114,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                     ),
                     const Text(
                       "You Won this Competition !!!",
+                      textAlign: TextAlign.center,
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold , color: Colors.green),
                     ),
@@ -113,6 +122,7 @@ class ResultsPageView extends GetView<ResultsPageController> {
                       height: 20,
                     ),
                     Obx(() => Text("LeaderBoard will be in ${controller.current} seconds",
+                        textAlign: TextAlign.center,
                         style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,

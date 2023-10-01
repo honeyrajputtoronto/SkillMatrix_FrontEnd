@@ -20,11 +20,12 @@ class PairController extends GetxController {
 
   @override
   void onInit() {
-
+    //round++;
     WebAppReloadDetector.onReload(() {
       Get.offAllNamed(Routes.HOME);
     });
-
+    participantLevel++;
+    getTotalRound();
     Timer (
       const Duration(seconds: 7),
           () {
@@ -50,15 +51,52 @@ class PairController extends GetxController {
   }
 
 
+  void getTotalRound() async {
+    // final prefs = await SharedPreferences.getInstance();
+    // accessToken = prefs.getString('access_token_value')!;
+    // print(accessToken);
+    print("https://skillmatrixfinal.azurewebsites.net/levels/$competitionId/$participantLevel");
+    final levelResponse = await http.post(Uri.parse("https://skillmatrixfinal.azurewebsites.net/levels/$competitionId/$participantLevel") , body: {});
+    print(levelResponse.statusCode);
+    if (levelResponse.statusCode == 201) {
+      final json = await jsonDecode(levelResponse.body);
+      print(json);
+      // print(json['level']);
+      // print(json['level']['round']);
+      if(json['total_level'] == 1) {
+        round.value = "Final Round";
+      }
+      else if (json['total_level'] == 2)
+        {
+          round.value = "Semi-Final Round";
+        }
+      else {
+      round.value = "Round ${json['total_level']}";
+      }
+      // print(round);
+    }
+    else {
+      Get.showSnackbar(const GetSnackBar(
+        message: "Could not fetch data",
+        duration: Duration(seconds: 5),
+      ));
+    }
+  }
+
+
+
+
   void getUserpair() async {
     final prefs = await SharedPreferences.getInstance();
     // if(participantLevel == 0) {
-    participantLevel++;
+
+    //participantLevel++;
+
     // } else {
     //   participantLevel = participantLevel + 2;
     // }
-    var response = await http.post(Uri.parse('https://skillmatrix.azurewebsites.net/pair/$participantLevel') , body: {});
-    response = await http.get(Uri.parse('https://skillmatrix.azurewebsites.net/pair/$participantLevel'));
+    var response = await http.post(Uri.parse('https://skillmatrixfinal.azurewebsites.net/pair/$participantLevel') , body: {});
+    response = await http.get(Uri.parse('https://skillmatrixfinal.azurewebsites.net/pair/$participantLevel'));
     if (response.statusCode == 200) {
     final json = await jsonDecode(response.body);
       int playerIndex=0;
@@ -99,11 +137,16 @@ class PairController extends GetxController {
     // final response = await http.get(Uri.parse("http://127.0.0.1:8000/questions/$participantLevel"));   //TODO: add level to link
     // if (response.statusCode == 200) {
     //   questionData = json.decode(response.body);
-    final response = await rootBundle.loadString('assets/json/questions.json');
+    final response = await rootBundle.loadString('assets/json/abc.json');
    // print(response);
     var responseData = json.decode(response);
   //  print(responseData);
+
+
     questionData = responseData['level$participantLevel'];
+
+    //questionData = responseData['level1'];
+
    // print(questionData);
   //  print(questionData.isEmpty);
       // questionData = [

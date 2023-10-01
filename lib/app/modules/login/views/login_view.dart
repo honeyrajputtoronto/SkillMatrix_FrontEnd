@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import '../../../routes/app_pages.dart';
@@ -21,16 +22,25 @@ class LoginView extends GetView<LoginController> {
         ),
         body: Center(
           child: SizedBox(
-            width: Get.width / 2,
+            width: MediaQuery.of(context).size.width < 600 ?  Get.width * 0.9 : Get.width / 2,
             child: Form(
               key: controller.formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TextFormField(
-                    decoration: InputDecoration(
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.deny(
+                          RegExp(r'\s')),
+                    ],
+                    decoration: const InputDecoration(
                         hintText: 'Username',
-                        hintStyle: Theme.of(context).textTheme.bodySmall),
+                        hintStyle: TextStyle(
+                            color: Colors.grey,)
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter an Username';
@@ -47,9 +57,14 @@ class LoginView extends GetView<LoginController> {
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
-                    decoration: InputDecoration(
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
+                    decoration: const InputDecoration(
                         hintText: 'Password',
-                        hintStyle: Theme.of(context).textTheme.bodySmall),
+                        hintStyle: TextStyle(
+                          color: Colors.grey,)
+                    ),
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
