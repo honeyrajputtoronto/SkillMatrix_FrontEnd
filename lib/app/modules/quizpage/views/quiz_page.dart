@@ -203,6 +203,7 @@ class _QuizPageState extends State<QuizPage> {
                                               questionData[widget.index]
                                               ["choice${index + 1}"]
                                                   .toString(),
+
                                               style: const TextStyle(
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold,
